@@ -2,38 +2,20 @@ import healpix.essentials.*;
 
 public final class Healpix implements HealpixImpl {
    
-   /** Provide the HEALPix number associated to a coord, for a given order
-    * @param order HEALPix order [0..MAXORDER]
-    * @param lon longitude (expressed in the Healpix frame)
-    * @param lat latitude (expressed in the Healpix frame)
-    * @return HEALPix number
-    * @throws Exception
-    */
+  
    public long ang2pix(int order,double lon, double lat) throws Exception {
       double theta = Math.PI/2. - lat/180.*Math.PI;
       double phi = lon/180.*Math.PI;
       return healpixBase[order].ang2pix(new Pointing(theta,phi));
    }
    
-   /** Provide the spherical coord associated to an HEALPix number, for a given order
-    * @param order HEALPix order [0..MAXORDER]
-    * @param npix HEALPix number
-    * @return coord (lon,lat) (expressed in the Healpix frame)
-    * @throws Exception
-    */
+  
    public double [] pix2ang(int order,long npix) throws Exception {
       Pointing res = healpixBase[order].pix2ang(npix);
       return new double[]{ res.phi*180./Math.PI, (Math.PI/2. - res.theta)*180./Math.PI};
    }
    
-   /** Provide the list of HEALPix numbers fully covering a circle (for a specified order)
-    * @param order Healpix order
-    * @param lon    center longitude (expressed in the Healpix frame)
-    * @param lat    center latitude (expressed in the Healpix frame)
-    * @param radius circle radius (in degrees)
-    * @return
-    * @throws Exception
-    */
+  
    public long [] queryDisc(int order, double lon, double lat, double radius) throws Exception {
       double theta = Math.PI/2. - lat/180.*Math.PI;
       double phi = lon/180.*Math.PI;
@@ -42,9 +24,7 @@ public final class Healpix implements HealpixImpl {
       return list.toArray();
    }
 
-   /*********************** private stuff ***************************************************/
-   
-   /** Maximal HEALPix order supported by the library */
+  
    static public final int MAXORDER = 29;
    
    static private HealpixBase [] healpixBase;
