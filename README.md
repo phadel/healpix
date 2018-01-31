@@ -1,6 +1,7 @@
-# healpix
+# Écriture d'un algorithme de partitionnement sous spark/healpix
 
 
+# PartitionRdd.java 
 PartitionRdd.java 	<br />
 Utilisation d'un RDD puis d'une DataFrame pour le chargement et la structuration des données.	<br />	
 Avec une requête sur le DataFrame j'obtient par exemple: Dataset<Row> sqlDF = spark.sql("SELECT alpha, delta FROM astro"); <br />		
