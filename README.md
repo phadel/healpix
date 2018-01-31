@@ -1,12 +1,14 @@
-# Écriture d'un algorithme de partitionnement sous spark/healpix
+# Écriture d'un algorithme de partitionnement sous Spark
+[spark-image]:https://spark.apache.org/images/spark-logo-trademark.png
 
-### All algorithms implemented in Java (for education)
-## Sort Algorithms
-__Properties__
+## Bibliothèques
+__Healpix__
+HEALPix pour Hierarchical Equal Area isoLatitude Pixelisation est un algorithme de pixelisation.<br />	
+La pixellisation peut être vu comme la mise en correspondance de la sphère avec douze losanges sur le plan,<br />	 suivie par la division binaire de ces losanges en pixels. Le logiciel associé HEALPix implémente l'algorithme. 
 
-### Spark
-[binary-image]:https://spark.apache.org/images/spark-logo-trademark.png
-# PartitionRdd.java 
+[healpix-image]:http://healpix.sourceforge.net/html/introf1.png
+
+### PartitionRdd.java 
 PartitionRdd.java 	<br />
 Utilisation d'un RDD puis d'une DataFrame pour le chargement et la structuration des données.	<br />	
 Avec une requête sur le DataFrame j'obtient par exemple: Dataset<Row> sqlDF = spark.sql("SELECT alpha, delta FROM astro"); <br />		
