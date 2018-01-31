@@ -3,9 +3,9 @@
 ### All algorithms implemented in Java (for education)
 ## Sort Algorithms
 __Properties__
-https://spark.apache.org/images/spark-logo-trademark.png
+
 ### Spark
-[spark-image]:https://spark.apache.org/images/spark-logo-trademark.png
+[binary-image]:https://spark.apache.org/images/spark-logo-trademark.png
 # PartitionRdd.java 
 PartitionRdd.java 	<br />
 Utilisation d'un RDD puis d'une DataFrame pour le chargement et la structuration des données.	<br />	
