@@ -1,13 +1,18 @@
 # Écriture d'un algorithme de partitionnement sous spark/healpix
 
-
+### All algorithms implemented in Java (for education)
+## Sort Algorithms
+__Properties__
+https://spark.apache.org/images/spark-logo-trademark.png
+### Spark
+[spark-image]:https://spark.apache.org/images/spark-logo-trademark.png
 # PartitionRdd.java 
 PartitionRdd.java 	<br />
 Utilisation d'un RDD puis d'une DataFrame pour le chargement et la structuration des données.	<br />	
 Avec une requête sur le DataFrame j'obtient par exemple: Dataset<Row> sqlDF = spark.sql("SELECT alpha, delta FROM astro"); <br />		
   astro est une vue dans laquelle j'ai pushé le DataFrame	<br />	
 +------------------+-------------------+		<br />
-|             alpha|              delta|		<br />
+|    alpha		|              delta|		<br />
 +------------------+-------------------+		<br />
 | 179.1741777461607| -54.84440852225688|		<br />
 |179.16863296831528|-54.818955882435255|		<br />
@@ -35,9 +40,9 @@ only showing top 20 rows		<br />
 Utilisation des UDF pour changer le type de alpha et delta<br />		
 // Utilisation des UDFs		<br />
 	spark.udf().register("COORDO", new UDF1<Long, Long>() {		
-		  /**		
-		 * 		
-		 */		
+		  /**	<br />	
+		 * <br />		
+		 */<br />		
 		private static final long serialVersionUID = 1L;		
 
 		@Override		
