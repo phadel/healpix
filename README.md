@@ -5,7 +5,7 @@
 PartitionRdd.java 	<br />
 Utilisation d'un RDD puis d'une DataFrame pour le chargement et la structuration des données.	<br />	
 Avec une requête sur le DataFrame j'obtient par exemple: Dataset<Row> sqlDF = spark.sql("SELECT alpha, delta FROM astro"); <br />		
-  astro est une vue dans laquelle j'ai pusher le DataFrame	<br />	
+  astro est une vue dans laquelle j'ai pushé le DataFrame	<br />	
 +------------------+-------------------+		<br />
 |             alpha|              delta|		<br />
 +------------------+-------------------+		<br />
