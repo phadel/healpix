@@ -1,21 +1,13 @@
 package com.partition.file.partition;
 
 import org.apache.spark.api.java.JavaRDD;
-import org.apache.spark.sql.Column;
-//import org.apache.spark.sql.Column;
-//import org.apache.spark.network.protocol.Encoders;
 import org.apache.spark.sql.Dataset;
-//import org.apache.spark.sql.Encoder;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SparkSession;
-import org.apache.spark.sql.api.java.UDF1;
+import org.apache.spark.sql.functions;
+import org.apache.spark.sql.types.DataTypes;
 
 import healpix.essentials.*;
-//import org.apache.spark.sql.expressions.UserDefinedAggregateFunction;
-//import org.apache.spark.sql.expressions.UserDefinedFunction;
-import org.apache.spark.sql.types.DataTypes;
-//import org.apache.spark.sql.types.LongType;
-//import scala.collection.Seq;
 import healpix.essentials.Scheme;
 
 
@@ -23,7 +15,7 @@ import healpix.essentials.Scheme;
 
 public class PartitionRdd {
 	
-	
+
 	//private static final String LongType = null;
 
 	public static void main(String[] args) {
@@ -114,11 +106,6 @@ public class PartitionRdd {
 	Dataset<Row>  astroDFparquet=spark.sql("SELECT * FROM parquet.`/home/vaadl/Bureau/test/astroDF.parquet`");
 	//astroDFparquet.show();
 	
-	//Espace insuffisant
-	/*astroDF
-	.write()
-	.partitionBy("alpha")
-	.saveAsTable("partitions_alpha_N050k");*/
 	
 	//astroDF.write().parquet("/home/vaadl/Bureau/test/astroRDD.parquet");
 	
@@ -132,19 +119,23 @@ public class PartitionRdd {
 	System.out.printf("\n");
 	sqlDF.show();
 	
+	astroDFparquet.select( astroDFparquet.col("alpha").cast(DataTypes.LongType).as("alphaPix"), astroDFparquet.col("delta").cast(DataTypes.LongType).as("deltaPix")).show();
+	
+	
+	
 	// Utilisation des UDFs
-	spark.udf().register("COORDO", new UDF1<Long, Long>() {
+	//spark.udf().register("COORDO", new UDF1<Long, Long>() {
 		  /**
 		 * 
 		 */
-		private static final long serialVersionUID = 1L;
+		/*private static final long serialVersionUID = 1L;
 
 		@Override
 		  public Long call(Long alpha) {
 		    return (((long) alpha));
 		  }
 		}, DataTypes.LongType);
-	spark.sql("SELECT alpha, COORDO(alpha) AS alphaPix FROM astro").show();
+	spark.sql("SELECT alpha, COORDO(alpha) AS alphaPix FROM astro").show();*/
     	
     	//Dataset<Row> coordoDF = astroDFparquet.withColumn("alphaTmp", astroDF.col("alpha").cast(LongType)).drop("alpha").withColumnRenamed("alphaTmp", "alpha");   
     	//coordoDF = astroDFparquet.withColumn("deltaTmp", astroDF.col("delta").cast(LongType)).drop("delta").withColumnRenamed("deltaTmp", "delta");   
@@ -155,10 +146,6 @@ public class PartitionRdd {
     	//.write()
     	//.format("parquet")
      	//.save("/home/vaadl/Bureau/test/coordoDF.parquet");
-    	
-    	
-    	
-    	
     	
     	
     	/*astroDFparquet.col("alpha.field");
@@ -180,18 +167,35 @@ public class PartitionRdd {
     try {
     	HealpixBase healpixBase = new HealpixBase(nSide, Scheme.NESTED);
     	
+    	double theta = Math.PI / 2 - Math.toRadians(-54);
+        double phi = Math.toRadians(179);
+        
+    	long res = healpixBase.ang2pix(new Pointing(theta,phi));
+    	System.out.printf("\n");
+    	System.out.printf("Pix");
+    	System.out.printf("\n");
+    	System.out.printf("%d", nSide);
+    	System.out.printf("\n");
+    	System.out.printf("%d", res);
+        //System.out.printf("Pix %d= %d", nSide, res);
     	
-    	//double theta = Math.PI / 2 - Math.toRadians(delta);
-    	//double phi = Math.toRadians(alpha);
-    	
-    	//long res = healpixBase.ang2pix(new Pointing(alphaPix, deltaPix));
-        // System.out.printf("Pix %d= %d", nSide, res);
+    	 Dataset<Row> healPixDF = astroDFparquet.withColumn("reshealpix", functions.lit(res));   
+    	 
+    	 healPixDF.select("reshealpix").show();
+    	 
+    	 healPixDF
+    		.write()
+    		.partitionBy("reshealpix")
+    		.saveAsTable("partitions_reshealpix_N050k");
     	
     }
     catch(Exception e){
     	e.printStackTrace();
     }
 	
+	
+    
 	 }
-
+	 
+ 	
 }
