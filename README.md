@@ -40,24 +40,3 @@ Avec une requête sur le DataFrame j'obtient par exemple: Dataset<Row> sqlDF = s
 +------------------+-------------------+		<br />
 only showing top 20 rows		<br />
 <br />
-Utilisation des UDF pour changer le type de alpha et delta<br />		
-// Utilisation des UDFs		<br />
-	spark.udf().register("COORDO", new UDF1<Long, Long>() {		
-		  /**	<br />	
-		 * <br />		
-		 */<br />		
-		private static final long serialVersionUID = 1L;		
-
-		@Override		
-		  public Long call(Long alpha) {		
-		    return (((long) alpha));		
-		  }		
-		}, DataTypes.LongType);		
-	spark.sql("SELECT alpha, COORDO(alpha) AS alphaPix FROM astro").show();		
-Renvoie un message:		<br />
-org.apache.spark.SparkException: Failed to execute user defined function($anonfun$27: (double) => bigint)	<br />		
-SparkQL <br />		
-
-Contient le partitionnement SparkQL__		<br />
-J'utiilise ici la fonction HashPartitionner. Le paramètre transmis à HashPartitioner définit le nombre de partitions (10).
-
