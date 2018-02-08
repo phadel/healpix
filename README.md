@@ -9,7 +9,7 @@ Sous JAVA Jhealpix.jar est la bibliothèque associée.
 
 ![alt text](http://healpix.sourceforge.net/html/introf1.png)
 
-## Classe principal: PartitionRdd.java ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) ![#f03c15](https://placehold.it/15/f03c15/000000?text=+)
+## Classe principale: PartitionRdd.java ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) ![#f03c15](https://placehold.it/15/f03c15/000000?text=+)
 ### Contient les deux parties de l'algorithme
 ####  Partie I: Partitionnement Brute
 ####  Partie II Partitionnement Intelligent devant rassembler les cellules adjacents, les mémoriser dans un Buffer
