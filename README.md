@@ -14,7 +14,7 @@ Sous JAVA Jhealpix.jar est la bibliothèque associée.
 ####  Partie I: Partitionnement Brute
 ####  Partie II Partitionnement Intelligent devant rassembler les cellules adjacentes, les mémoriser dans un Buffer
 ####  puis effectuer le partitionnement selon ces cellules voisines.
-### Map: Application du schéma au RDD
+### Map: Application du schéma au Dataset
 
 ## AstroRecord.java: classe pour le RDD ![#1589F0](https://placehold.it/15/1589F0/000000?text=+) ![#1589F0](https://placehold.it/15/1589F0/000000?text=+)
 ##  HelloSpark.java: affiche ma version Spark  ![#1589F0](https://placehold.it/15/1589F0/000000?text=+)
