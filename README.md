@@ -17,4 +17,4 @@ Sous JAVA Jhealpix.jar est la bibliothèque associée.
 ### Map: Application du schéma au RDD
 
 ## AstroRecord.java: classe pour le RDD ![#1589F0](https://placehold.it/15/1589F0/000000?text=+) ![#1589F0](https://placehold.it/15/1589F0/000000?text=+)
-##  HelloSpark.java: affiche ma version Spark  ![#1589F0](https://placehold.it/15/1589F0/000000?text=+) ![#1589F0](https://placehold.it/15/1589F0/000000?text=+)
+##  HelloSpark.java: affiche ma version Spark  ![#1589F0](https://placehold.it/15/1589F0/000000?text=+)
